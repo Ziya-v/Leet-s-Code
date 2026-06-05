@@ -1,35 +1,34 @@
 import java.util.*;
 public class Leet67{
    
-        public String addBinary(String a,String b){
-            String sum="";int n;int carry=0; char ca,cb;
 
-            int la=a.length();
-            int lb=b.length();
-            if(la>lb){
-            n= la;}
-            else{
-            n=lb;
+    public String addBinary(String a, String b) {
+        StringBuilder result = new StringBuilder();
 
+        int i = a.length() - 1;
+        int j = b.length() - 1;
+        int carry = 0;
+
+        while (i >= 0 || j >= 0 || carry == 1) {
+            int sum = carry;
+
+            if (i >= 0) {
+                sum += a.charAt(i) - '0';
+                i--;
             }
-            int diff=Math.abs(la-lb);
-            for(int i=n-1;i>=0;i--){
-                ca = a.charAt(i);
-                cb=b.charAt(i-diff);
-             if(ca == '1' && cb == '1'){
-                carry=1;
-             }
 
-                if(ca!= cb && carry==0){
-                sum=sum+"0";
-            } 
-                else if(ca!= cb && carry==1){
-                    sum=sum+"1";
-
-                }
+            if (j >= 0) {
+                sum += b.charAt(j) - '0';
+                j--;
             }
-              return sum;
+
+            result.append(sum % 2);
+            carry = sum / 2;
         }
+
+        return result.reverse().toString();
+    }
+
             
             public static void main(String[] args){
                 Scanner ob = new Scanner(System.in);
