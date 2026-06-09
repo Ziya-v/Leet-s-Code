@@ -1,5 +1,5 @@
 import java.util.*;
-class Leet136 {
+class SingleLeet {
     public int singleNumber(int[] nums) {
         for (int i = 0; i < nums.length; i++) {
             int count = 0;
@@ -27,7 +27,7 @@ class Leet136 {
 {
     nums[i] = obj.nextInt();
 }
-Leet136 ob = new Leet136();
+SingleLeet ob = new SingleLeet();
 int x= ob.singleNumber(nums);
 System.out.println(x);
     }
