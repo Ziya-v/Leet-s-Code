@@ -1,0 +1,41 @@
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Leet20 {
+    public boolean isValid(String s) {
+
+        Stack<Character> stack = new Stack<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '(' || c == '{' || c == '[') {
+                stack.push(c);
+            } 
+            else {
+                if (stack.isEmpty()) {
+                    return false;
+                }
+                char top = stack.pop();
+                if (c == ')' && top != '(')
+                    return false;
+                if (c == '}' && top != '{')
+                    return false;
+                if (c == ']' && top != '[')
+                    return false;
+            }
+        }
+
+        return stack.isEmpty();
+    }
+ public static void main(String[] args) {
+            Scanner ob =new Scanner(System.in);
+            System.out.println("Enter the parenthesis string");
+            String s = ob.next();
+            Leet20 in = new Leet20();
+            boolean value = in.isValid(s);
+            System.out.println(value);
+        }
+        
+
+    
+}
